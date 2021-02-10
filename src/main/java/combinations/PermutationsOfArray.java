@@ -6,8 +6,9 @@ import java.util.Arrays;
 public class PermutationsOfArray {
 
     public static void main(String[] args) {
-        int[] nums = new int[] { 1, 2, 3, 4 };
-        permutations(nums, nums.length);
+        int[] nums = new int[] { 1, 2, 3 };
+        // permutations(nums, nums.length);
+        backtrack(nums, 0, nums.length);
     }
 
     private static void permutations(int[] nums, int size) {
@@ -30,6 +31,23 @@ public class PermutationsOfArray {
                 nums[size - 1] = tmp;
             }
 
+        }
+    }
+
+    private static void backtrack(int[] nums, int idx, int size) {
+        if(idx == size) {
+            System.out.println(Arrays.toString(nums));
+            return;
+        }
+
+        for(int i = idx; i < size; i++) {
+            int tmp = nums[idx];
+            nums[idx] = nums[i];
+            nums[i] = tmp;
+            backtrack(nums, idx + 1, size);
+            tmp = nums[idx];
+            nums[idx] = nums[i];
+            nums[i] = tmp;
         }
     }
 }
