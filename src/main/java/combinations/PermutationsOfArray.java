@@ -7,17 +7,17 @@ public class PermutationsOfArray {
 
     public static void main(String[] args) {
         int[] nums = new int[] { 1, 2, 3, 4 };
-        permutations(nums, nums.length, nums.length);
+        permutations(nums, nums.length);
     }
 
-    private static void permutations(int[] nums, int idx, int size) {
+    private static void permutations(int[] nums, int size) {
         if(size == 1) {
             System.out.println(Arrays.toString(nums));
             return;
         }
 
         for(int i = 0; i < size; i++) {
-            permutations(nums, idx, size - 1);
+            permutations(nums, size - 1);
             boolean odd = (size % 2 == 1);
             // Odds swap first element and last element
             if(odd) {
